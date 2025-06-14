@@ -1,6 +1,7 @@
 import React from "react";
 import { getUsername } from "../utils/getUsername";
 import Image from "next/image";
+import Form from "./form";
 
 export default async function Page() {
   const username = await getUsername();
@@ -11,7 +12,7 @@ export default async function Page() {
     <div>
       <h1>My Library</h1>
       <h2>Hello {username}</h2>
-
+      <Form></Form>
       <div>
         {data.map((book) => {
           return (
@@ -24,7 +25,6 @@ export default async function Page() {
                 unoptimized
               ></Image>
               <h3>{book.title}</h3>
-              <p>{book.review}</p>
               <p>{book.rating}/5</p>
             </div>
           );

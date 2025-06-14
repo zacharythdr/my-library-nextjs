@@ -5,6 +5,5 @@ import { cookies } from "next/headers";
 export async function getUsername() {
   const cookieStore = await cookies();
   const username = cookieStore.get("username").value;
-  console.log(username);
   return username;
 }
