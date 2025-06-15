@@ -54,7 +54,7 @@ export default async function Page() {
                   ))}
                 </div>
 
-                <div className="flex gap-2 items-center max-w-md gap-2">
+                <div className="flex gap-2 items-center max-w-md">
                   <SeeDetail id={book._id} />
                   <EditButton id={book._id} />
                   <DeleteButton id={book._id} />

@@ -27,7 +27,7 @@ export default function Home() {
             errorMessage="Please enter your name"
             labelPlacement="outside"
             name="username"
-            placeholder="Enter your name"
+            placeholder="Enter your name - type 'ary' for example"
             className="w-full py-3 rounded-lg  "
           />
           <Button
