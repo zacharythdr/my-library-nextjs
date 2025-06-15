@@ -4,6 +4,7 @@ import Image from "next/image";
 import Form from "./form";
 import DeleteButton from "./DeleteButton";
 import SeeDetail from "./SeeDetail";
+import EditButton from "./EditButton";
 
 export default async function Page() {
   const username = await getUsername();
@@ -32,6 +33,7 @@ export default async function Page() {
               <p>{book.rating}/5</p>
               <SeeDetail id={book._id}></SeeDetail>
               <DeleteButton id={book._id}></DeleteButton>
+              <EditButton id={book._id} />
             </div>
           );
         })}

@@ -49,5 +49,29 @@ export async function deleteBookAction(_, formData) {
   };
 }
 
+export async function getBookByID(id) {
+  const res = await fetch(
+    `https://v1.appbackend.io/v1/rows/LSHWjLWo4iOE/${id}`
+  );
+  const data = await res.json();
+  return data;
+}
 
+export async function updateBookAction(_, formData) {
+  const id = formData.get("id");
+  const title = formData.get("title");
+  const review = formData.get("review");
+  const rating = formData.get("rating");
+  const image = formData.get("image");
 
+  const username = await getUsername();
+
+  await fetch("https://v1.appbackend.io/v1/rows/LSHWjLWo4iOE", {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify([{ _id: id, title, review, rating, image, username }]),
+  });
+
+  revalidatePath("/library");
+  return { status: "Success", message: "A book has been updated!" };
+}

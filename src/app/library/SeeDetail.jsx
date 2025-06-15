@@ -10,6 +10,7 @@ import {
   Button,
   useDisclosure,
 } from "@heroui/react";
+import { getBookByID } from "./action";
 
 export default function SeeDetail({ id }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -17,17 +18,8 @@ export default function SeeDetail({ id }) {
 
   useEffect(() => {
     const fetchBook = async () => {
-      try {
-        const res = await fetch(
-          `https://v1.appbackend.io/v1/rows/LSHWjLWo4iOE/${id}`
-        );
-        const data = await res.json();
-
-        setBook(data);
-        console.log(book, "book");
-      } catch (error) {
-        console.error("Failed to fetch book detail:", error);
-      }
+      const data = await getBookByID(id);
+      setBook(data);
     };
 
     if (isOpen) {
