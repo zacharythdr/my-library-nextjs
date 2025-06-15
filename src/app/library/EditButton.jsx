@@ -35,8 +35,12 @@ export default function EditButton({ id }) {
 
   return (
     <>
-      <button onClick={onOpen}>
-        <FaEdit />
+      <button
+        onClick={onOpen}
+        className="p-2 rounded-md bg-blue-100 text-blue-600 hover:bg-blue-200 transition-colors"
+        title="Edit"
+      >
+        <FaEdit className="text-xl" />
       </button>
 
       <Modal

@@ -31,7 +31,12 @@ export default function SeeDetail({ id }) {
 
   return (
     <>
-      <Button onPress={onOpen}>See Detail</Button>
+      <Button
+        className="font-crimson  rounded-lg bg-[#5D796B] text-white hover:bg-gray-800 transition-colors duration-200"
+        onPress={onOpen}
+      >
+        See Detail
+      </Button>
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}

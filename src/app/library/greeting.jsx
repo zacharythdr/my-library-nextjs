@@ -10,8 +10,9 @@ export default function Greeting({ username }) {
   };
 
   return (
-    <h2 className="text-lg text-gray-700">
+    <h2 className="text-lg text-gray-700 font-jost">
       {getGreeting()}, <span className="font-semibold">{username}</span>
+      .What have you read recently?
     </h2>
   );
 }

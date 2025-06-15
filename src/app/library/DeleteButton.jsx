@@ -9,8 +9,13 @@ export default function DeleteButton({ id }) {
   return (
     <form action={action}>
       <input type="hidden" name="id" value={id} />
-      <button type="submit" disabled={pending}>
-        <MdDelete className="cursor-pointer"></MdDelete>
+      <button
+        type="submit"
+        disabled={pending}
+        className="p-2 rounded-md bg-red-100 text-red-600 hover:bg-red-200 transition-colors disabled:opacity-50"
+        title="Delete"
+      >
+        <MdDelete className="text-xl" />
       </button>
     </form>
   );
