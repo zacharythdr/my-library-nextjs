@@ -29,3 +29,25 @@ export async function createBookAction(_, formData) {
     message: "A book has been added!",
   };
 }
+
+export async function deleteBookAction(_, formData) {
+  const id = formData.get("id");
+
+  await fetch("https://v1.appbackend.io/v1/rows/LSHWjLWo4iOE", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify([id]),
+  });
+
+  revalidatePath("/library");
+
+  return {
+    status: "Success",
+    message: "A book has been deleted!",
+  };
+}
+
+
+

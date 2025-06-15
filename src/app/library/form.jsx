@@ -15,6 +15,7 @@ export default function Form({ username }) {
       <Input name="rating" placeholder="Rating" type="number"></Input>
       <Input name="image" placeholder="Image Url"></Input>
       <Button type="submit">Add Book</Button>
+      
     </form>
   );
 }
