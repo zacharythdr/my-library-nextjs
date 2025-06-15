@@ -1,16 +1,22 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Jost, Crimson_Text } from "next/font/google";
 import { HeroUIProvider } from "@heroui/react";
 
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+export const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+export const jost = Jost({
   subsets: ["latin"],
+  variable: "--font-jost",
+});
+
+export const crimson_text = Crimson_Text({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-crimson",
 });
 
 export const metadata = {
@@ -22,7 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} ${jost.variable} ${crimson_text.variable} antialiased`}
       >
         <HeroUIProvider>{children}</HeroUIProvider>
       </body>

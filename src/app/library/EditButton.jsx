@@ -39,7 +39,11 @@ export default function EditButton({ id }) {
         <FaEdit />
       </button>
 
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        className=" bg-white/50 backdrop-blur-md w-full mx-auto my-auto max-w-lg rounded-lg shadow-md"
+      >
         <ModalContent>
           {(onClose) => (
             <>
@@ -60,11 +64,6 @@ export default function EditButton({ id }) {
                   <p>Loading...</p>
                 )}
               </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  Close
-                </Button>
-              </ModalFooter>
             </>
           )}
         </ModalContent>

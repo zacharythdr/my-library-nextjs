@@ -5,6 +5,7 @@ import Form from "./form";
 import DeleteButton from "./DeleteButton";
 import SeeDetail from "./SeeDetail";
 import EditButton from "./EditButton";
+import Greeting from "./greeting";
 
 export default async function Page() {
   const username = await getUsername();
@@ -15,8 +16,11 @@ export default async function Page() {
 
   return (
     <div>
-      <h1>My Library</h1>
-      <h2>Hello {username}</h2>
+      <h1 className="font-crimson text-5xl font-bold text-[#553e2c]">
+        My Library 📚
+      </h1>
+      <Greeting username={username} />
+      
       <Form mode="create" />
       <div>
         {data.map((book) => {

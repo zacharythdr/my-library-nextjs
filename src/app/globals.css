@@ -4,8 +4,21 @@
 @source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
 @custom-variant dark (&:is(.dark *));
 
+:root {
+  --font-inter: var(--font-inter);
+  --font-jost: var(--font-jost);
+  --font-crimson: var(--font-crimson);
+}
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-jost {
+  font-family: var(--font-jost), sans-serif;
+}
+
+.font-crimson {
+  font-family: var(--font-crimson), serif;
 }
