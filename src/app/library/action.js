@@ -2,17 +2,15 @@
 
 import { revalidatePath } from "next/cache";
 import { getUsername } from "../utils/getUsername";
+import { redirect } from "next/navigation";
 
 export async function createBookAction(_, formData) {
-  console.log("hit create");
-
   const title = formData.get("title");
   const review = formData.get("review");
   const rating = formData.get("rating");
   const image = formData.get("image");
 
   const username = await getUsername();
-  console.log(title, review, rating, image, username);
 
   await fetch("https://v1.appbackend.io/v1/rows/LSHWjLWo4iOE", {
     method: "POST",
@@ -54,6 +52,7 @@ export async function getBookByID(id) {
     `https://v1.appbackend.io/v1/rows/LSHWjLWo4iOE/${id}`
   );
   const data = await res.json();
+
   return data;
 }
 
@@ -66,10 +65,12 @@ export async function updateBookAction(_, formData) {
 
   const username = await getUsername();
 
+  console.log(id, title, review, rating, image, username, "edit");
+
   await fetch("https://v1.appbackend.io/v1/rows/LSHWjLWo4iOE", {
-    method: "PATCH",
+    method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify([{ _id: id, title, review, rating, image, username }]),
+    body: JSON.stringify({ _id: id, title, review, rating, image, username }),
   });
 
   revalidatePath("/library");

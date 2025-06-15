@@ -17,7 +17,7 @@ export default async function Page() {
     <div>
       <h1>My Library</h1>
       <h2>Hello {username}</h2>
-      <Form></Form>
+      <Form mode="create" />
       <div>
         {data.map((book) => {
           return (
