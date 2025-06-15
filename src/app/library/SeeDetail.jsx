@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { FaStar } from "react-icons/fa";
 import {
   Modal,
   ModalContent,
@@ -11,6 +12,7 @@ import {
   useDisclosure,
 } from "@heroui/react";
 import { getBookByID } from "./action";
+import Image from "next/image";
 
 export default function SeeDetail({ id }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -30,25 +32,56 @@ export default function SeeDetail({ id }) {
   return (
     <>
       <Button onPress={onOpen}>See Detail</Button>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        className="bg-white/70 backdrop-blur-md w-full mx-auto my-auto max-w-xl rounded-lg shadow-md"
+      >
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">
+              <ModalHeader className="flex flex-col gap-1 text-[#553e2c] text-2xl font-jost">
                 {book?.title ?? "Loading..."}
               </ModalHeader>
               <ModalBody>
                 {book ? (
                   <>
-                    <p>
-                      <strong>Review:</strong> {book.review}
-                    </p>
-                    <p>
-                      <strong>Rating:</strong> {book.rating}/5
-                    </p>
-                    <p>
-                      <strong>Belongs To:</strong> {book.username}
-                    </p>
+                    <div className="grid grid-cols-3 gap-4">
+                      <div className="col-span-1">
+                        <Image
+                          src={book.image}
+                          alt={book.title}
+                          width={200}
+                          height={200}
+                          unoptimized
+                        ></Image>
+                      </div>
+                      <div className="col-span-2 flex flex-col gap-y-2">
+                        <p>
+                          <strong className="text-[#553e2c]">Review:</strong>{" "}
+                          {book.review}
+                        </p>
+                        <p className="flex gap-m-2">
+                          <strong className="text-[#553e2c]">Rating:</strong>{" "}
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <FaStar
+                              key={i}
+                              className={`text-xl ${
+                                i < book.rating
+                                  ? "text-yellow-500"
+                                  : "text-gray-300"
+                              }`}
+                            />
+                          ))}
+                        </p>
+                        <p>
+                          <strong className="text-[#553e2c]">
+                            Belongs To:
+                          </strong>{" "}
+                          {book.username}
+                        </p>
+                      </div>
+                    </div>
                   </>
                 ) : (
                   <p>Loading detail...</p>
