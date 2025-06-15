@@ -17,7 +17,7 @@ export default async function Page() {
 
   return (
     <>
-      <div className="bg-[#fcf6ec] p-10 ">
+      <div className="bg-[#fcf6ec] p-10 min-h-screen">
         <div className="max-w-5xl mx-auto">
           <h1 className="font-crimson text-5xl mb-5 font-bold text-[#553e2c]">
             My Library 📚
